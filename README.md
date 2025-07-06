@@ -2,10 +2,6 @@
 
 A responsive and dynamic **Real-Time Currency Converter** built with **HTML, CSS, and JavaScript**. Convert between different currencies instantly using real exchange rates.
 
-## 🌐 Live Demo
-
-🔗 [View Live](https://your-live-demo-link) <!-- Replace with your actual hosted link -->
-
 ## 🛠️ Tech Stack
 
 - HTML 
@@ -22,11 +18,10 @@ A responsive and dynamic **Real-Time Currency Converter** built with **HTML, CSS
  
 ## Screenshot
 ![Currency Converter Screenshot](https://github.com/user-attachments/assets/6161ae8a-5cc8-4280-b1e6-cb03d5b8dd12)
-) <!-- Add your own screenshot -->
+
 
 ## 🚀 Getting Started)
 
 1. Clone the repository:
    ```bash
-   git clone https://kavy-borad.github.io/Real-Time-Currency-Converter/
-   
+ https://kavy-borad.github.io/Real-Time-Currency-Converter/
