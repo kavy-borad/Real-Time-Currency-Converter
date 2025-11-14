@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: #333;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.converter-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.converter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+}
+
+.currency-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.currency-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.currency-select {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: white;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a7bd5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+.currency-select:focus {
+  outline: none;
+  border-color: #3a7bd5;
+  box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.1);
+}
+
+.amount-input {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: right;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.amount-input:focus {
+  outline: none;
+  border-color: #3a7bd5;
+  box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.1);
+}
+
+.amount-input[readonly] {
+  background: #f0f9ff;
+  color: #0369a1;
+  cursor: default;
+}
+
+.swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  flex-shrink: 0;
+  margin: 0 0.25rem;
+}
+
+.swap-btn {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(58, 123, 213, 0.3);
+}
+
+.swap-btn:hover {
+  background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+  transform: rotate(180deg) scale(1.05);
+  box-shadow: 0 6px 16px rgba(58, 123, 213, 0.4);
+}
+
+.swap-btn:active {
+  transform: rotate(180deg) scale(0.95);
+}
+
+.rate-display {
+  background: linear-gradient(135deg, #e0f2fe 0%, #cfe9ff 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.rate-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.rate-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0c4a6e;
+}
+
+.rate-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0369a1;
+}
+
+.last-updated {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.convert-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.convert-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(58, 123, 213, 0.3);
+}
+
+.convert-btn:active {
+  transform: translateY(0);
+}
+
+.convert-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+.convert-btn.loading .btn-text {
+  display: none;
+}
+
+.convert-btn.loading .loading-spinner {
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #dc2626;
+  font-size: 0.875rem;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+/* Chart Section */
+.chart-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 0.5rem;
+  background: #f3f4f6;
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+
+.period-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.period-btn:hover {
+  background: rgba(58, 123, 213, 0.1);
+  color: #3a7bd5;
+}
+
+.period-btn.active {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(58, 123, 213, 0.3);
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .converter-card {
+    padding: 1rem;
+    border-radius: 16px;
+    margin: 0;
+  }
+  
+  .currency-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .swap-container {
+    margin: 0.75rem 0;
+    align-self: center;
+  }
+  
+  .input-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .currency-select,
+  .amount-input {
+    padding: 0.875rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .amount-input {
+    font-size: 1.125rem;
+  }
+  
+  .swap-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .convert-btn {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .rate-display {
+    padding: 1rem;
+  }
+  
+  .chart-section {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .chart-title {
+    font-size: 1.25rem;
+  }
+  
+  .chart-controls {
+    width: 100%;
+  }
+  
+  .period-btn {
+    flex: 1;
+    padding: 0.625rem;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 0.75rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .converter-card {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+  
+  .currency-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .swap-container {
+    margin: 0.75rem 0;
+    align-self: center;
+  }
+  
+  .input-wrapper {
+    flex-direction: column;
+  }
+  
+  .currency-select,
+  .amount-input {
+    padding: 0.875rem;
+    width: 100%;
+  }
+  
+  .chart-section {
+    padding: 1.5rem;
+  }
+  
+  .chart-container {
+    height: 280px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .container {
+    max-width: 700px;
+    padding: 1rem;
+  }
+  
+  .converter-card {
+    padding: 1.75rem;
+  }
+  
+  .currency-section {
+    flex-direction: column;
+  }
+  
+  .swap-container {
+    margin: 0.75rem 0;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  .currency-select,
+  .amount-input,
+  .convert-btn,
+  .swap-btn {
+    min-height: 44px; /* iOS recommended touch target size */
+  }
+  
+  .currency-select:focus,
+  .amount-input:focus {
+    transform: scale(1.02);
+    transition: transform 0.1s ease;
+  }
+  
+  .convert-btn:active {
+    transform: scale(0.98);
+  }
+  
+  .swap-btn:active {
+    transform: rotate(180deg) scale(0.9);
+  }
+}
+
+/* Improved mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  .header {
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.875rem;
+  }
+  
+  .converter-card {
+    padding: 1rem;
+  }
+}
+
+/* Enhanced animations */
+.converter-card {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.currency-select:hover,
+.amount-input:hover {
+  border-color: #d1d5db;
+}
+
+/* Focus visible for accessibility */
+.convert-btn:focus-visible,
+.swap-btn:focus-visible {
+  outline: 2px solid #3a7bd5;
+  outline-offset: 2px;
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.875rem;
+  }
+  
+  .converter-card {
+    padding: 0.75rem;
+    margin: 0.25rem;
+  }
+  
+  .currency-select,
+  .amount-input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .amount-input {
+    font-size: 1rem;
+  }
+  
+  .convert-btn {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .rate-display {
+    padding: 0.75rem;
+  }
+  
+  .rate-value {
+    font-size: 1rem;
+  }
+}
+
+/* Prevent zoom on iOS when focusing inputs */
+@media screen and (max-width: 768px) {
+  .currency-select,
+  .amount-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
